@@ -1,0 +1,40 @@
+<section class="p-3">
+  <div class="relative overflow-x-auto border p-5 rounded-lg">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            Task
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Alterar
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        @if (getTaskList(); as data) {
+        @for(item of data; track item) {
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+            {{ item.title }}
+          </th>
+          <td class="px-6 py-4">
+            <button type="button"
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              data-modal-target="modal-update" data-modal-toggle="modal-update">Alterar</button>
+          </td>
+        </tr>
+        } @empty {
+        <li>Sem dados</li>
+        }
+        } @else {
+        <div class="flex justify-center">
+          <div
+            class="px-3 py-1 text-xs font-medium leading-none text-center text-blue-800 bg-blue-200 rounded-full animate-pulse dark:bg-blue-900 dark:text-blue-200">
+            loading...</div>
+        </div>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
